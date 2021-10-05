@@ -9,12 +9,15 @@ export default function Home() {
 
   const onSubmit = (data) => {
     let {username, password} = data;
-    console.log(Users)
     if(
       Users.findIndex((el) =>{return el.username == username && el.password == password})+1
     ) {
-      window.opener.postMessage(JSON.stringify(data), '*');
-      window.close();
+      if(window.opener) {
+        window.opener.postMessage(JSON.stringify(data), '*');
+        window.close();
+      } else {
+        parent.postMessage(JSON.stringify(data), '*');
+      }
     } else {
       SetErrorMessage("User not Found, Try again")
       console.log("ssdd")
