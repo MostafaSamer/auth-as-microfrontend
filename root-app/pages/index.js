@@ -30,7 +30,7 @@ export default function Home() {
   const receiveMessage = event => {
     console.log(event)
     alert(event.data)
-    if (event.origin !== 'http://localhost:3000') {
+    if (event.origin !== 'http://localhost:3001') {
       return;
     }
     const { data } = event;
@@ -38,10 +38,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <button onClick={() => { openSignInWindow('http://localhost:3000', 'login with auth') }}>
+      <button onClick={() => { openSignInWindow('http://localhost:3001', 'login with auth') }}>
         Open Login with ...
       </button>
-      <iframe src="http://localhost:3000" title="W3Schools Free Online Web Tutorials"></iframe>
+      <iframe src="http://localhost:3001" title="W3Schools Free Online Web Tutorials"></iframe>
     </div>
   )
 }
